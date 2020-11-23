@@ -1,14 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-//import checkbox from 'react-bootstrap/checkbox';
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import { faCheck, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
-import {actions, initialState, todoSlice} from "../../Containers/TodoList/todoSlice";
-import {useState} from 'react';
-import { connect } from 'react-redux'
 import './TodoItem.scss';
-import TodoList from "../../Containers/TodoList/TodoList";
-import removeTodo from "../../Containers/TodoList/TodoList"
 
 /**
  * todo implement here component which will show todo item

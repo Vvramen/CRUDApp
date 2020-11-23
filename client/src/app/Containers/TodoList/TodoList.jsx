@@ -1,10 +1,15 @@
 import React, {useState, useEffect} from 'react';
-import Button from 'react-bootstrap/Button';
 import {connect} from 'react-redux';
 import TodoItem from '../../Components/TodoItem/TodoItem';
 import {actions, initialState, todoSlice} from './todoSlice';
 import PropTypes from 'prop-types'
 import { createSelector } from '@reduxjs/toolkit'
+import ToDoInput from "../../Components/TodoInput/ToDoInput";
+import { Link } from 'react-router-dom';
+import './TodoList.scss'
+import jwt_decode from 'jwt-decode'
+import { controlBadges } from '../../Constants/todo';
+import axios from "axios";
 /**
  * todo implement component called ToDoInput
  * which should receive onSubmit function which will be called on the press enter key
@@ -31,19 +36,32 @@ import {text} from "@fortawesome/fontawesome-svg-core";
 
 
 const TodoList = (props) => {
+
+    const token = localStorage.usertoken
+    const decoded = jwt_decode(token)
+
     const FILTER_MAP = {
         All: () => true,
         ToDo: todo => !todo.completed,
         Completed: todo => todo.completed
     };
 
+    const user = localStorage.getItem('userId')
     const {todos, remove, markAsChecked, clearCompleted, checkAll} = props
     const [state, setState] = useState({items: todos, filter: 'All'})
 
     useEffect(()  => {
         const todoList = todos.filter(FILTER_MAP['All'])
-        setState({items: todoList, filter: 'All'})
-        console.log('LOOG fsdfsdfsdfs');
+        //setState({items: todoList, filter: 'All'})
+
+        axios.get('http://localhost:8000/users/' + user + '/todos').then(res => {
+            setState({
+                items: res.data,
+                filter: 'All',
+                email: decoded.email
+            })
+        })
+        console.log('LOOG fsdfsdfds');
     },[todos])
 
     useEffect(() => {
@@ -68,6 +86,18 @@ const TodoList = (props) => {
 
     return (
         <React.Fragment>
+            <header className="todoHeader">
+                <Link to="/login" className="logoutBtn">
+                    Logout
+                </Link>
+            </header>
+            <div className="todoDescription">
+                <p>
+                    Hello {decoded.email}, its your TodoList
+                    <br/>
+                </p>
+
+            </div>
             <div className="todo-list">
                 <ToDoInput/>
                 <hr/>

@@ -1,35 +1,23 @@
 import React from 'react';
-import './App.css';
+import { BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
+import { connect } from 'react-redux';
+import SignUpPage  from './app/SignUpPage/SignUp';
+import {LoginPage} from "./app/LoginPage/Login";
 import TodoList from "./app/Containers/TodoList/TodoList";
-import ToDoInput from "./app/Components/TodoInput/ToDoInput";
-import {useRoutes} from "./app/routes";
-import {BrowserRouter as Router} from "react-router-dom";
-import {UseAuth} from './app/hooks/auth.hook'
-import {AuthContext} from "./app/context/AuthContext";
-import {Navbar} from "./app/Components/navbar";
 
-
-function App() {
-  const  {token, login, logout,userId} = UseAuth()
-  const isAuthenticated = !!token
-  const routes = useRoutes(isAuthenticated)
-  return (
-      <AuthContext.Provider value={{
-      token, login,logout, userId, isAuthenticated}}>
-        <Router>
-          {isAuthenticated && <Navbar/>}
-          <div className="App">
-            <header className="App-header">
-            {/*todo place your todo header here */}
-              Your todo list
-            </header>
-            <section>
-              <TodoList/>
-            </section>
-          </div>
-        </Router>
-      </AuthContext.Provider>
-  );
+class App extends React.Component {
+  render() {
+    const { history } = this.props
+    return (
+        <Switch>
+          <Route path="/register" component={SignUpPage} />
+          <Route history={history} path='/signup' component={SignUpPage} />
+          <Route history={history} path='/login' component={LoginPage} />
+          <Route history={history} path='/home' component={TodoList} />
+          <Redirect from='/home' to='/home'/>
+        </Switch>
+    );
+  }
 }
 
-export default App
+export {App}

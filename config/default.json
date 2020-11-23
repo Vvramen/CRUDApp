@@ -1,6 +1,0 @@
-{
-  "port": 8000,
-  "jwtSecret": "vladmernCRUD",
-  "mongoUri": "mongodb+srv://Vvramen:Vvramen10579@cluster0.c00dv.mongodb.net/CRUD?retryWrites=true&w=majority",
-  "baseUrl": "http://localhost:8000"
-}

@@ -1,0 +1,23 @@
+.reg {
+    font-size: 13px;
+    text-decoration: none;
+    color: black;
+}
+.reg:hover{
+    cursor: pointer;
+}
+.loginButton {
+    margin: 0 auto;
+    margin-top: 10px;
+    width: 98px;
+    height: 40px;
+    background: blue;
+    color: white;
+    font-family: Helvetica;
+    font-size: 15px;
+    border-radius: 30px;
+    outline: none;
+    text-decoration: none;
+    -webkit-text-stroke: medium;
+    padding: 12px;
+}
