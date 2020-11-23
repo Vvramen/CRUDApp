@@ -4,11 +4,11 @@ import TodoItem from '../../Components/TodoItem/TodoItem';
 import {actions, initialState, todoSlice} from './todoSlice';
 import PropTypes from 'prop-types'
 import { createSelector } from '@reduxjs/toolkit'
-import ToDoInput from "../../Components/TodoInput/ToDoInput";
+//import ToDoInput from "../../Components/TodoInput/ToDoInput";
 import { Link } from 'react-router-dom';
 import './TodoList.scss'
 import jwt_decode from 'jwt-decode'
-import { controlBadges } from '../../Constants/todo';
+//import { controlBadges } from '../../Constants/todo';
 import axios from "axios";
 /**
  * todo implement component called ToDoInput
@@ -38,7 +38,9 @@ import {text} from "@fortawesome/fontawesome-svg-core";
 const TodoList = (props) => {
 
     const token = localStorage.usertoken
-    const decoded = jwt_decode(token)
+    const decoded = {
+        email: 'blabla@bla.com'
+    }
 
     const FILTER_MAP = {
         All: () => true,

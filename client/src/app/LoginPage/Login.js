@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import "./Login.css"
-import { login } from '../Components/Actions/user.actions'
+import { login } from '../Components/actions/user.actions'
 class LoginPage extends React.Component {
     constructor(props) {
         super(props);
@@ -66,5 +66,7 @@ class LoginPage extends React.Component {
         );
     }
 }
+
+
 
 export {LoginPage}

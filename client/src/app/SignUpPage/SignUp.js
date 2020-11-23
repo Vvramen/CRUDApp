@@ -1,7 +1,6 @@
 import React from 'react';
 import './SignUp.css';
-import axios from "axios";
-import { register } from '../Components/Actions/user.actions'
+import { register } from '../Components/actions/user.actions';
 
 export default class SignUp extends React.Component {
     constructor(props) {
@@ -66,3 +65,5 @@ export default class SignUp extends React.Component {
         )
     }
 }
+
+export { SignUp }

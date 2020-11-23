@@ -3,26 +3,29 @@ import {actions, initialState, todoSlice} from "../../Containers/TodoList/todoSl
 import {useState, useEffect} from 'react';
 import { connect } from 'react-redux'
 import axios from "axios";
-import {getUser} from "../Actions/user.actions";
+//import {getUser} from "../actions/user.actions";
 
 const mapDispatch = { addTodo: actions.addTodo }
 
 const ToDoInput = ( props ) => {
+    console.log('LOOG ========================');
     const [value, setValue] = useState("");
     const handleSubmit = e => {
         e.preventDefault();
-        if ( !value ) {
-            return ;
-        }}
+        if (!value) {
+            return;
+        }
 
         const user = localStorage.getItem('userId')
         props.addTodo(value)
-        setTimeout(() => { return axios
-            .post ('http://localhost:8000/users/' + user + '/todos', {
-                title:value
-            })}, 1000)
+        setTimeout(() => {
+            return axios
+                .post('http://localhost:8000/users/' + user + '/todos', {
+                    title: value
+                })
+        }, 1000)
         setValue("")
-
+    }
     return (
         <form className="form" onSubmit={handleSubmit}>
             <input

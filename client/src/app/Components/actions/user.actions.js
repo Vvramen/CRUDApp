@@ -1,19 +1,18 @@
 import axios from 'axios'
 
-export const register = newUser => {
-    return axios
-        .post('http://localhost:4000/users/register', {
+export const register = async newUser => {
+    await axios
+        .post('http://localhost:8000/users/register', {
             email: newUser.email,
             password: newUser.password
-        })
-        .then(response => {
-            console.log('Registered')
-        })
+        });
+    console.log('Registered')
+    ;
 }
 
 export const login = user => {
     return axios
-        .post('http://localhost:4000/users/login', {
+        .post('http://localhost:8000/users/login', {
             email: user.email,
             password: user.password
         })
