@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 export const initialState = {
-  tasks: [],  // task should have a format {id: unique_value, text: taks_text, checked: flag_show_if_task_completed (false by default) }
+  tasks: [],  // task should have a format {id: unique_, text: taks_text, checked: flag_show_if_task_completed (false by default) }
 };
 let nextTodoId = 0
 

@@ -6,11 +6,11 @@ const createTodo = async (req, res) => {
     try {
         const userId = req.params.userId;
         if (!userId) {
-            return res.status(400).json({ status: 'InvalidData', error: 'UserIdNotFound' });
+            return res.status(401).json({ status: 'InvalidData', error: 'UserIdNotFound' });
         }
         const user = await User.findById(userId);
         if (!user) {
-            return res.status(400).json({ status: 'InvalidData', error: 'UserNotFound' });
+            return res.status(402).json({ status: 'InvalidData', error: 'UserNotFound' });
         }
         const todo = await Todo.create({ title: req.body.title, user: userId });
         await user.todos.unshift(todo._id);
@@ -18,24 +18,24 @@ const createTodo = async (req, res) => {
         res.status(201).json(todo);
     }
     catch (e) {
-        res.status(400).json({ status: 'InvalidData', error: e.message })
+        res.status(403).json({ status: 'InvalidData', error: e.message })
     }
 };
 const deleteTodo = async (req, res) => {
     console.log("delete WORK")
     const todoId = req.params.todoId;
     if (!todoId) {
-        return res.status(400).json({ status: 'InvalidData', error: 'TodoIdNotFound' });
+        return res.status(401).json({ status: 'InvalidData', error: 'TodoIdNotFound' });
     }
     try {
         const userId = req.params.userId;
         if (!userId) {
-            return res.status(400).json({ status: 'InvalidData', error: 'UserIdNotFound' });
+            return res.status(402).json({ status: 'InvalidData', error: 'UserIdNotFound' });
         }
 
         const user = await User.findById(userId);
         if (!user) {
-            return res.status(400).json({ status: 'InvalidData', error: 'UserNotFound' });
+            return res.status(403).json({ status: 'InvalidData', error: 'UserNotFound' });
         }
 
         await Todo.deleteOne({_id: todoId});
@@ -51,11 +51,11 @@ const getTodos = async (req, res) => {
     try {
         const userId = req.params.userId;
         if (!userId) {
-            return res.status(400).json({ status: 'InvalidData', error: 'UserIdNotFound' });
+            return res.status(401).json({ status: 'InvalidData', error: 'UserIdNotFound' });
         }
         const user = await User.findById(userId);
         if (!user) {
-            return res.status(400).json({ status: 'InvalidData', error: 'UserNotFound' });
+            return res.status(402).json({ status: 'InvalidData', error: 'UserNotFound' });
         }
 
         const todo = await Todo.find({ user: userId });
@@ -64,7 +64,8 @@ const getTodos = async (req, res) => {
         await user.save();
         res.status(201).json(todo);
     } catch (e) {
-        res.status(400).json({ status: 'fail', error: e.message })
+        console.log(e)
+        res.status(403).json({ status: 'fail', error: e.message })
     }
 }
 
@@ -73,22 +74,22 @@ const toggleTodo = async (req, res) => {
         const todoId = req.params.todoId;
 
         if (!todoId) {
-            return res.status(400).json({ status: 'InvalidData', error: 'TodoIdNotFound' });
+            return res.status(401).json({ status: 'InvalidData', error: 'TodoIdNotFound' });
         }
 
         if (!todoId) {
-            return res.status(400).json({ status: 'InvalidData', error: 'TodoIdNotFound' });
+            return res.status(402).json({ status: 'InvalidData', error: 'TodoIdNotFound' });
         }
 
         const todo = await Todo.findById(todoId);
         if (!todo) {
-            return res.status(400).json({ status: 'InvalidData', error: 'TodoNotFound' });
+            return res.status(403).json({ status: 'InvalidData', error: 'TodoNotFound' });
         }
 
         await todo.toggleComplete();
         res.json({ status: 'Toggled' });
     } catch (e) {
-        res.status(400).json({ status: 'TogglingFailed', error: e.message })
+        res.status(404).json({ status: 'TogglingFailed', error: e.message })
     }
 };
 

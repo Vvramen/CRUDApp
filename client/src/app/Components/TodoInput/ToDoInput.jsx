@@ -23,7 +23,7 @@ const ToDoInput = ( props ) => {
                 .post('http://localhost:8000/users/' + user + '/todos', {
                     title: value
                 })
-        }, 1000)
+        })
         setValue("")
     }
     return (
