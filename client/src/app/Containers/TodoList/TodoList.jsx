@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import TodoItem from '../../Components/TodoItem/TodoItem';
 import {actions} from './todoSlice';
 import PropTypes from 'prop-types'
-import { createSelector } from '@reduxjs/toolkit'
+//import { createSelector } from '@reduxjs/toolkit'
 import ToDoInput from "../../Components/TodoInput/ToDoInput";
 import { Link } from 'react-router-dom';
 import './TodoList.scss'
