@@ -1,9 +1,8 @@
 import React from 'react';
-import {actions, initialState, todoSlice} from "../../Containers/TodoList/todoSlice";
-import {useState, useEffect} from 'react';
+import {actions} from "../../Containers/TodoList/todoSlice";
+import {useState} from 'react';
 import { connect } from 'react-redux'
 import axios from "axios";
-//import {getUser} from "../actions/user.actions";
 
 const mapDispatch = { addTodo: actions.addTodo }
 

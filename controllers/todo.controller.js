@@ -97,13 +97,13 @@ const completeAllTodos = async (req, res) => {
     try {
         const userId = req.params.userId;
         if (!userId) {
-            return res.status(400).json({ status: 'InvalidData', error: 'UserIdNotFound' });
+            return res.status(401).json({ status: 'InvalidData', error: 'UserIdNotFound' });
         }
 
         const user = await User.findById(userId);
 
         if (!user) {
-            return res.status(400).json({ status: 'InvalidData', error: 'UserNotFound' });
+            return res.status(402).json({ status: 'InvalidData', error: 'UserNotFound' });
         }
         await Todo.updateMany({user: userId}, {$set: {completed: true}});
         res.json({ status: 'Success' });
@@ -116,7 +116,7 @@ const deleteCompletedTodos = async (req, res) => {
 
     const userId = req.params.userId;
     if (!userId) {
-        return res.status(400).json({ status: 'InvalidData', error: 'UserIdNotFound' });
+        return res.status(401).json({ status: 'InvalidData', error: 'UserIdNotFound' });
     }
     try {
         const todos = await Todo.find({ completed: true, user: userId });
@@ -126,7 +126,7 @@ const deleteCompletedTodos = async (req, res) => {
         await User.updateOne({_id: userId}, query);
         res.status(200).json({ status: 'Success' });
     } catch (err) {
-        res.status(400).json({ status: err })
+        res.status(402).json({ status: err })
     }
 };
 module.exports = {

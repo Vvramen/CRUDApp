@@ -5,7 +5,7 @@ import {App} from './App';
 import { Provider } from 'react-redux';
 import store from './app/store'
 import * as serviceWorker from './serviceWorker';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router} from "react-router-dom";
 import {createBrowserHistory} from 'history'
 
 const history = createBrowserHistory()

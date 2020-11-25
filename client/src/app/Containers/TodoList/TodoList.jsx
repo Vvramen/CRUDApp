@@ -50,15 +50,15 @@ const TodoList = (props) => {
         setState({items: todoList, filter: name})
     };
 
-    const checkAllTodos = () => {
-        console.log(todos)
-    }
+    //const checkAllTodos = () => {
+        //console.log(todos)
+    //}
 
 
-    let kol= [];
-    function lostCountToDo (el){
-        if (el.completed === true) {kol.push(el)}
-    }
+    //let kol= [];
+    //function lostCountToDo (el){
+        //if (el.completed === true) {kol.push(el)}
+    //}
 
 
 
@@ -132,9 +132,9 @@ const TodoList = (props) => {
 
 const selectTodos = state => state.todos
 
-const selectVisibleTodos = createSelector(
-    [selectTodos]
-)
+//const selectVisibleTodos = createSelector(
+    //[selectTodos]
+//)
 
 TodoList.propTypes = {
     todos: PropTypes.array.isRequired,
