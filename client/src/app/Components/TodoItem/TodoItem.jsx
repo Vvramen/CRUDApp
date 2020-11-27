@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './TodoItem.scss';
 
 
-const TodoItem = ({todo, text, id, completed, markAsChecked, onRemove}) => {
+const TodoItem = ({todo, id, markAsChecked, onRemove}) => {
     return (
         <React.Fragment>
             <li className="todo"

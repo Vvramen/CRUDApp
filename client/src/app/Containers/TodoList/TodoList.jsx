@@ -130,14 +130,14 @@ const TodoList = (props) => {
     )
 }
 
-const selectTodos = state => state.todos
+//const selectTodos = state => state.todos
 
 //const selectVisibleTodos = createSelector(
     //[selectTodos]
 //)
 
 TodoList.propTypes = {
-    todos: PropTypes.array.isRequired,
+    todos: PropTypes.array.isRequired
 }
 
 const mapStateToProps = state => ({todos: state.todo})
