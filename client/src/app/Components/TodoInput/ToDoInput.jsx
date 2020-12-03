@@ -4,10 +4,10 @@ import {useState} from 'react';
 import { connect } from 'react-redux'
 import axios from "axios";
 
-const mapDispatch = { addTodo: actions.addTodo }
+const mapDispatch = {addTodo: actions.addTodo }
 
 const ToDoInput = ( props ) => {
-    console.log('LOOG ========================');
+    console.log('LOOG ======================== LOOG');
     const [value, setValue] = useState("");
     const handleSubmit = e => {
         e.preventDefault();

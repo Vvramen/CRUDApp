@@ -7,6 +7,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: 3px;
 }
 .taskText {
   font-size: 2.2vh;
@@ -19,6 +20,9 @@
   size: 50px;
 }
 
+.completeTask{
+  text-decoration: line-through;
+}
 
 
 
@@ -42,11 +46,13 @@
 [type="checkbox"]:not(:checked) + label:after,
 [type="checkbox"]:checked + label:after {
   content: '✔';
-  display: absolute;
+  display: inline-flex;
   margin-left: 5px;
   font-size: 20px;
   color: #09ad7e;
   transition: all .2s;
+  position: relative;
+  bottom: 4px;
 }
 
 [type="checkbox"]:not(:checked) + label:after {
@@ -67,4 +73,8 @@
 
 .todos input[type=checkbox]{
   display: none;
+}
+
+label{
+  margin-bottom: 0;
 }
