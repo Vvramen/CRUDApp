@@ -15,7 +15,4 @@ router.route('/users/:userId/todos/:todoId')
     .patch(todoController.toggleTodo)
     .delete(todoController.deleteTodo);
 
-
-// a simple test url to check that all of our files are communicating correctly.
-//router.get('/test', product_controller.test);
 module.exports = router;
